@@ -18,7 +18,7 @@ To create the image `dell/redis`, execute the following command on the docker-re
     sudo docker build -t dell/redis .
 
 
-##Running the Redis server
+##Running the Redis Server
 
 Run the following command to start Redis:
 
@@ -53,7 +53,7 @@ You can test your Redis deployment by setting a few key/value pairs with the fol
      
      set <key_name> <value>
 
-### Setting a specific password
+### Setting a Specific Password
 
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `REDIS_PASS` to your specific password when running the container:
@@ -65,7 +65,7 @@ You can now test your deployment:
     redis-cli -a mypass
 
 
-### Configuring Redis as a LRU cache
+### Configuring Redis as a LRU Cache
 
 
 In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
