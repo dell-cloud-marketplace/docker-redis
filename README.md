@@ -22,12 +22,12 @@ To create the image `dell/redis`, execute the following command on the docker-re
 
 Run the following command to start Redis:
 
-    sudo docker run -d -p 6379:6379 dell/redis
+    sudo docker run -d -p 6379:6379 --name redis dell/redis
 
 The first time that you run your container, a new random password will be set.
 To get the password, check the logs of the container by running:
 
-    sudo docker logs <CONTAINER_ID>
+    sudo docker logs redis
 
 You will see an output like the following:
 
@@ -58,7 +58,7 @@ You can test your Redis deployment by setting a few key/value pairs with the fol
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `REDIS_PASS` to your specific password when running the container:
 
-    sudo docker run -d -p 6379:6379 -e REDIS_PASS="mypass" dell/redis
+    sudo docker run -d -p 6379:6379 -e REDIS_PASS="mypass" --name redis dell/redis
 
 You can now test your deployment:
 
@@ -68,10 +68,9 @@ You can now test your deployment:
 ### Configuring Redis as a LRU cache
 
 
-In order to run Redis as a cache that will delete older entries when the memory fills up
-provide the following additional environment variables:
+In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
 
-    sudo docker run -d -p 6379:6379 -e REDIS_MODE="LRU" -e REDIS_MAXMEMORY="256mb" dell/redis
+    sudo docker run -d -p 6379:6379 -e REDIS_MODE="LRU" -e REDIS_MAXMEMORY="256mb" --name redis dell/redis
 
 where `REDIS_MODE` is `LRU` and `REDIS_MAXMEMORY` is the memory limit in which
 Redis will start deleting the less recently used (LRU) keys.
