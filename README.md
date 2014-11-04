@@ -10,7 +10,7 @@ Name       | Version                 | Description
 Redis      | 2.8.9                   | Key-value cache and store
 Ubuntu     | Ubuntu Trusty           | Operating system
 
-##Usage
+## Usage
 
 ### Start the Container
 To start your container with:
@@ -22,8 +22,7 @@ Do:
 
     sudo docker run -d -p 6379:6379 --name redis dell/redis
 
-The first time that you run your container, a new random password will be set.
-To get the password, check the logs of the container by running:
+When the container starts, a random password will be set. To get the password, check the logs of the container by running:
 
     sudo docker logs redis
 
@@ -37,30 +36,27 @@ You will see an output like the following:
       Please remember to change the above password as soon as possible!
     ========================================================================
 
-In this case, `5elsT6KtjrqVtOitprnDm7M9Vgz0MGgu` is the password set. 
-You can then connect to Redis:
+In this case, `5elsT6KtjrqVtOitprnDm7M9Vgz0MGgu` is the password. You can then connect to Redis:
 
     redis-cli -a 5elsT6KtjrqVtOitprnDm7M9Vgz0MGgu
      
 Or by explicitly specifying the host and port
     
     redis-cli -a 5elsT6KtjrqVtOitprnDm7M9Vgz0MGgu -h 127.0.0.1 -p 6379
+
+Test your Redis deployment by setting and getting a key/value pair, as follows:
      
-Done!
-You can test your Redis deployment by setting a few key/value pairs with the following command:
-     
-     set <key_name> <value>
+    set key1 "123"
+    get key1
 
 ### Advanced Example 1
-If you want to use a preset password instead of a random generated one, you can
-set the environment variable `REDIS_PASS` to your specific password when running the container:
+If you want to use a preset password instead of a random generated one, you can set the environment variable `REDIS_PASS` to a specific password when running the container:
 
     sudo docker run -d -p 6379:6379 -e REDIS_PASS="mypass" --name redis dell/redis
 
 You can now test your deployment:
 
     redis-cli -a mypass
-
 
 ### Advanced Example 2
 Redis facilitates a LRU cache. In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
