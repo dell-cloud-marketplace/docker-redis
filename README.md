@@ -12,15 +12,13 @@ Ubuntu     | Ubuntu Trusty           | Operating system
 
 ##Usage
 
+### Start the Container
+To start your container with:
 
-To create the image `dell/redis`, execute the following command on the docker-redis folder:
+* A named container ("redis")
+* Host port 6379 mapped to container port 6379 (default Redis server port)
 
-    sudo docker build -t dell/redis .
-
-
-##Running the Redis Server
-
-Run the following command to start Redis:
+Do:
 
     sudo docker run -d -p 6379:6379 --name redis dell/redis
 
@@ -53,8 +51,7 @@ You can test your Redis deployment by setting a few key/value pairs with the fol
      
      set <key_name> <value>
 
-### Setting a Specific Password
-
+### Advanced Example 1
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `REDIS_PASS` to your specific password when running the container:
 
@@ -65,10 +62,8 @@ You can now test your deployment:
     redis-cli -a mypass
 
 
-### Configuring Redis as a LRU Cache
-
-
-In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
+### Advanced Example 2
+Redis facilitates a LRU cache. In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
 
     sudo docker run -d -p 6379:6379 -e REDIS_MODE="LRU" -e REDIS_MAXMEMORY="256mb" --name redis dell/redis
 
