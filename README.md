@@ -61,7 +61,8 @@ You can now test your deployment:
 ### Advanced Example 2
 Redis facilitates a LRU cache. In order to run Redis as a cache that will delete older entries when the memory fills up, you will need to provide the following additional environment variables:
 
-    sudo docker run -d -p 6379:6379 -e REDIS_MODE="LRU" -e REDIS_MAXMEMORY="256mb" --name redis dell/redis
+    sudo docker run -d -p 6379:6379 -e REDIS_MODE="LRU" -e REDIS_MAXMEMORY="256mb" \
+    --name redis dell/redis
 
 where `REDIS_MODE` is `LRU` and `REDIS_MAXMEMORY` is the memory limit in which
 Redis will start deleting the less recently used (LRU) keys.
