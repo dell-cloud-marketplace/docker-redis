@@ -7,7 +7,7 @@ The stack comprises the following components:
 
 Name       | Version                 | Description
 -----------|-------------------------|------------------------------
-Redis      | 2.8.9                   | Key-value cache and store
+Redis      | latest                  | Key-value cache and store
 Ubuntu     | Ubuntu Trusty           | Operating system
 
 ## Usage
