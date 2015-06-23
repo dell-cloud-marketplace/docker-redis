@@ -5,11 +5,8 @@ MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv C7917B12 && \
-    echo "deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu quantal \
-    main" >> /etc/apt/sources.list && \
-    apt-get update && \
-    apt-get install -y redis-server=2:2.8.9-1chl1~quantal1 pwgen && \
+RUN apt-get update && \
+    apt-get install -y redis-server pwgen && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -18,9 +15,10 @@ ADD run.sh /run.sh
 ADD set_redis_password.sh /set_redis_password.sh
 RUN chmod +x /*.sh
 
-# Set environment variables
-ENV REDIS_MODE **None**
+# Environment variables
+ENV REDIS_MODE ""
 ENV REDIS_TIMEOUT 0
+ENV REDIS_PASS ""
 
 # Expose Redis server port
 EXPOSE 6379
