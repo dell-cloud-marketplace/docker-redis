@@ -7,7 +7,7 @@ The stack comprises the following components:
 
 Name       | Version                 | Description
 -----------|-------------------------|------------------------------
-Redis      | 2.8.9                   | Key-value cache and store
+Redis      | latest                  | Key-value cache and store
 Ubuntu     | Ubuntu Trusty           | Operating system
 
 ## Usage
@@ -68,6 +68,17 @@ where `REDIS_MODE` is `LRU` and `REDIS_MAXMEMORY` is the memory limit in which
 Redis will start deleting the less recently used (LRU) keys.
 
 More info at: http://redis.io/topics/lru-cache
+
+## Reference
+
+### Environmental Variables
+
+Variable        | Default  | Description
+----------------|----------|-----------------------------------------------------------------------
+REDIS_PASS      | *random* | Redis password
+REDIS_MAXMEMORY | 256mb    | Maximum memory in LRU cache mode
+REDIS_MODE      |          | If "LRU" Redis is configured as a LRU cache
+REDIS_TIMEOUT   | 0        | Close the client connection if it is inactive for the specified seconds
 
 ### Image Details
 

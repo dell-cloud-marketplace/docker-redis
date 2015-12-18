@@ -1,7 +1,4 @@
 #!/bin/bash
-if [ "${REDIS_MODE}" == "**None**" ]; then
-    unset REDIS_MODE
-fi
 
 if [ ! -f /.redis_configured ]; then
     if [ "$REDIS_MODE" == "LRU" ]; then
